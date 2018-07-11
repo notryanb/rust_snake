@@ -1,9 +1,19 @@
 extern crate pancurses;
 
-use pancurses::{initscr, endwin, Input, noecho};
+use pancurses::*;
 
 fn main() {
     let window = initscr();
+    start_color();
+    use_default_colors();
+    cbreak();
+    init_pair(1, COLOR_GREEN, COLOR_BLACK);
+    window.bkgd(COLOR_PAIR(1));
+    let win_w = window.get_max_x();
+    let win_h = window.get_max_y(); 
+
+    window.addstr(&format!("Width {:?}, Height: {:?}\n\n", win_w, win_h));
+
     window.printw("Type things and press `delete` to quit`\n");
     window.refresh();
     window.keypad(true);
