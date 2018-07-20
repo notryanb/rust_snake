@@ -1,10 +1,15 @@
 extern crate termion;
 
+pub mod board;
+
+use board::Board;
 use termion::{color,style};
 
 fn main() {
-    println!("{}Red", color::Fg(color::Red));
-    println!("{}Blue", color::Fg(color::Blue));
-    println!("{}Blue'n'Bold{}", style::Bold, style::Reset);
-    println!("{}Just plain italic", style::Italic);
+    let width = 50;
+    let height = 30;
+    let board = Board::new(width, height);
+
+
+    // println!("{}{}", color::Fg(color::Red), test());
 }
