@@ -1,3 +1,8 @@
+extern crate termion;
+
+use termion::{color, style};
+use std::fmt;
+
 #[derive(PartialEq, Debug)]
 pub enum CellType {
     Food,
@@ -43,6 +48,17 @@ impl Board {
         }
 
         board_vec
+    }
+}
+
+impl fmt::Display for Board {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        for cell in self.iter() {
+            match cell.x % cell.height {
+                0 => { write!(f, "{}\n", color::Fg(color::green)) }
+                _ => { write!(f, "{}", color::Fg(color::blue)) }
+            }
+        }
     }
 }
 
