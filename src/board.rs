@@ -52,13 +52,17 @@ impl Board {
 }
 
 impl fmt::Display for Board {
-    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-        for cell in self.iter() {
-            match cell.x % cell.height {
-                0 => { write!(f, "{}\n", color::Fg(color::green)) }
-                _ => { write!(f, "{}", color::Fg(color::blue)) }
-            }
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let display_str = String::new();
+
+        for cell in self.grid.iter() {
+            match cell.x % self.height {
+                0 => write!(f, "{}\n", color::Fg(color::Green)),
+                _ => write!(f, "{}", color::Fg(color::Blue))
+            };
         }
+
+        write!(f, "{}", display_str)
     }
 }
 

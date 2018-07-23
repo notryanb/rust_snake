@@ -10,7 +10,7 @@ fn main() {
     let height = 30;
     let board = Board::new(width, height);
 
-    println!(&board);
+    println!("{}", board);
 
 
     // println!("{}{}", color::Fg(color::Red), test());
